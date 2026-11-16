@@ -2,7 +2,9 @@
 
 The core of a bus ticketing service: trip search, seat map, buying and cancelling tickets. The focus is on **never selling the same seat twice** and on shipping the app to **Azure with infrastructure as code and a passwordless CI/CD pipeline**.
 
-**Live:** https://miniobilet-api-sj6smn.azurewebsites.net/api/v1/status
+[![CI/CD](https://github.com/NejatSENER/mini-obilet/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/NejatSENER/mini-obilet/actions)
+
+**Live demo:** currently offline (Azure resources paused to avoid costs).
 
 ## Architecture
 
