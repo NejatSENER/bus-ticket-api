@@ -1,8 +1,8 @@
 using Azure.Identity;
 using Azure.Monitor.OpenTelemetry.AspNetCore;
 using Microsoft.EntityFrameworkCore;
-using MiniObilet.Api;
-using MiniObilet.Api.Data;
+using BusTicket.Api;
+using BusTicket.Api.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,14 +40,14 @@ app.MapHealthChecks("/health");
 app.MapGet("/", () => Results.Redirect("/api/v1/status"));
 app.MapGet("/api/v1/status", (IConfiguration config, IHostEnvironment env) => new
 {
-    app = "Mini Obilet API",
+    app = "Bus Ticket API",
     environment = env.EnvironmentName,
     database = GetDbProvider(config),
     keyVault = !string.IsNullOrEmpty(config["KeyVault:Uri"]),
     paymentKeyLoaded = !string.IsNullOrEmpty(config["PaymentProvider:ApiKey"]),
     monitoring = !string.IsNullOrEmpty(config["APPLICATIONINSIGHTS_CONNECTION_STRING"])
 });
-app.MapMiniObiletApi();
+app.MapBusTicketApi();
 
 app.Run();
 

@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace MiniObilet.Api.Data;
+namespace BusTicket.Api.Data;
 
 public class Trip
 {
@@ -63,6 +63,6 @@ public class DesignTimeFactory : IDesignTimeDbContextFactory<AppDbContext>
 {
     public AppDbContext CreateDbContext(string[] args) =>
         new(new DbContextOptionsBuilder<AppDbContext>()
-            .UseSqlServer("Server=localhost;Database=miniobilet;Trusted_Connection=True")
+            .UseSqlServer("Server=localhost;Database=busticket;Trusted_Connection=True")
             .Options);
 }
