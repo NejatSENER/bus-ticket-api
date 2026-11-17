@@ -25,12 +25,12 @@ jobs:
       - run: dotnet test -c Release --no-build --logger "console;verbosity=normal"
 
       - name: Publish
-        run: dotnet publish src/MiniObilet.Api -c Release --no-build -o publish
+        run: dotnet publish src/BusTicket.Api -c Release --no-build -o publish
 
       - name: Idempotent migration script (for review)
         run: |
           dotnet tool restore
-          dotnet ef migrations script --idempotent --project src/MiniObilet.Api --configuration Release --no-build --output migrations.sql
+          dotnet ef migrations script --idempotent --project src/BusTicket.Api --configuration Release --no-build --output migrations.sql
 
       - uses: actions/upload-artifact@v4
         with:

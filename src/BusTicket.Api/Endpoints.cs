@@ -1,8 +1,8 @@
 using System.Security.Cryptography;
 using Microsoft.EntityFrameworkCore;
-using MiniObilet.Api.Data;
+using BusTicket.Api.Data;
 
-namespace MiniObilet.Api;
+namespace BusTicket.Api;
 
 public record TripSummaryDto(int Id, string Company, string Origin, string Destination, DateTime DepartureTime, decimal Price, int AvailableSeats);
 public record SeatDto(int Number, bool IsTaken);
@@ -14,7 +14,7 @@ public static class Endpoints
 {
     private const string PnrAlphabet = "ABCDEFGHJKLMNPRSTUVYZ23456789";
 
-    public static void MapMiniObiletApi(this WebApplication app)
+    public static void MapBusTicketApi(this WebApplication app)
     {
         var api = app.MapGroup("/api/v1");
 

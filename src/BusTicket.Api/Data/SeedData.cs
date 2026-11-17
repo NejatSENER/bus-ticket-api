@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace MiniObilet.Api.Data;
+namespace BusTicket.Api.Data;
 
 public static class SeedData
 {

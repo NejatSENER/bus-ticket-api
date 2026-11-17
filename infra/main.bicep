@@ -1,13 +1,13 @@
-// Mini Obilet infrastructure: every Azure resource in one deployment
-// az deployment group create -g rg-miniobilet-se -f infra/main.bicep -p githubRepo=... githubSubject=...
+// Bus Ticket infrastructure: every Azure resource in one deployment
+// az deployment group create -g rg-busticket-se -f infra/main.bicep -p githubRepo=... githubSubject=...
 
 @description('Region for all resources')
 param location string = resourceGroup().location
 
 @description('Resource name prefix')
-param prefix string = 'miniobilet'
+param prefix string = 'busticket'
 
-@description('GitHub repository, e.g. NejatSENER/mini-obilet')
+@description('GitHub repository, e.g. NejatSENER/bus-ticket-api')
 param githubRepo string
 
 @description('GitHub OIDC subject. New repos include owner and repo ids: repo:owner@id/repo@id:environment:production')
@@ -34,7 +34,7 @@ param paymentApiKey string = newGuid()
 
 var suffix = take(uniqueString(resourceGroup().id), 6)
 var webAppName = '${prefix}-api-${suffix}'
-var dbName = 'miniobilet'
+var dbName = 'busticket'
 var sqlServerName = '${prefix}-sql-${suffix}'
 var sqlFqdn = '${sqlServerName}${environment().suffixes.sqlServerHostname}'   // avoids a web <-> sql dependency cycle
 
@@ -196,7 +196,7 @@ resource actionGroup 'Microsoft.Insights/actionGroups@2023-01-01' = if (!empty(a
   name: '${prefix}-ag-${suffix}'
   location: 'global'
   properties: {
-    groupShortName: 'miniobilet'
+    groupShortName: 'busticket'
     enabled: true
     emailReceivers: [ { name: 'developer', emailAddress: alertEmail, useCommonAlertSchema: true } ]
   }

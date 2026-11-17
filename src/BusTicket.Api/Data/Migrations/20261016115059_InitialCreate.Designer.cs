@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MiniObilet.Api.Data;
+using BusTicket.Api.Data;
 
 #nullable disable
 
-namespace MiniObilet.Api.Data.Migrations
+namespace BusTicket.Api.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     [Migration("20261016115059_InitialCreate")]
@@ -25,7 +25,7 @@ namespace MiniObilet.Api.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("MiniObilet.Api.Data.Ticket", b =>
+            modelBuilder.Entity("BusTicket.Api.Data.Ticket", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -72,7 +72,7 @@ namespace MiniObilet.Api.Data.Migrations
                     b.ToTable("Tickets");
                 });
 
-            modelBuilder.Entity("MiniObilet.Api.Data.Trip", b =>
+            modelBuilder.Entity("BusTicket.Api.Data.Trip", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -112,9 +112,9 @@ namespace MiniObilet.Api.Data.Migrations
                     b.ToTable("Trips");
                 });
 
-            modelBuilder.Entity("MiniObilet.Api.Data.Ticket", b =>
+            modelBuilder.Entity("BusTicket.Api.Data.Ticket", b =>
                 {
-                    b.HasOne("MiniObilet.Api.Data.Trip", "Trip")
+                    b.HasOne("BusTicket.Api.Data.Trip", "Trip")
                         .WithMany("Tickets")
                         .HasForeignKey("TripId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -123,7 +123,7 @@ namespace MiniObilet.Api.Data.Migrations
                     b.Navigation("Trip");
                 });
 
-            modelBuilder.Entity("MiniObilet.Api.Data.Trip", b =>
+            modelBuilder.Entity("BusTicket.Api.Data.Trip", b =>
                 {
                     b.Navigation("Tickets");
                 });
